@@ -36,3 +36,12 @@ external/*
 
 # Contents of the build folder should not be in git
 build/*
+
+# Resulting ROOT files should not be in git
+results/*
+
+# Don't add the argumentum library to git
+argumentum*
+
+# Don't add the main executable to git
+main
