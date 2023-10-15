@@ -4,7 +4,11 @@ void signal_and_background(const std::vector<Measurement>& measurements,
                            const std::string& output_filename) {
   // Note: We need .c_str() because TFile expects a C-string (i.e. a char*)
   // but output_filename is a std::string
-  TFile output_file{output_filename.c_str(), "RECREATE"};
+  //
+  // Note: We use UPDATE here rather than RECREATE so that we can add new
+  // histograms if we already created the file with the raw data. See the
+  // documentation for TFile for details about what this means.
+  TFile output_file{output_filename.c_str(), "UPDATE"};
   TH1D* signal_histogram{new TH1D{"signal_histogram", "Signal", 100, 0, 3}};
   TH1D* background_histogram{
       new TH1D{"background_histogram", "Background", 100, 0, 3}};
