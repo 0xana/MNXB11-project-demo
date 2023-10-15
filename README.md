@@ -39,6 +39,32 @@ cmake ../../argumentum -DCMAKE_INSTALL_PREFIX=../../external
 make -j4 install VERBOSE=1
 ```
 
+## Build the project demo 
 
-# Dataset 
+Having built and installed the argumentum library you can build and run the project as (remember that you need to be in the container environment to have access to ROOT!)
+
+``` sh
+# Create the output directories 
+# Hint: Can you get Make to do this for you?  
+mkdir -v figures results 
+# Build the project 
+make 
+# Get help from the CLI library 
+./main --help
+# Write the raw data from the CSV file to the output ROOT file
+./main --input-file data/random_data.csv --analysis 0
+# Run the implemented analysis 
+./main --input-file data/random_data.csv --analysis 1 
+
+# Run the ROOT macro to make a histogram with some manual styling and fits from the analysis 
+root macros/signal_and_background.C 
+# In the ROOT prompt
+> signal_and_background("results/output.root")
+
+# Look at the raw data and histograms stored in the ROOT file 
+# Can you spot the bug? 
+rootbrowse results/output.root 
+
+```
+
 
