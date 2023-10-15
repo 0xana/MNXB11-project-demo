@@ -68,7 +68,8 @@ int main(int argc, char* argv[]) {
       "Choose which of the project's steps to run: 0 -> Run data extraction "
       "only and persist the raw data, 1 "
       "-> Run analysis 1 (Signal and Background), 2 -> Run analysis 2 (Some "
-      "analysis), 3 -> Run analysis 3 (Some other analysis)");
+      "analysis), 3 -> Run analysis 3 (Some other analysis) , 4 -> Run all "
+      "three analyses");
 
   // Run the parser!
   //
@@ -92,6 +93,44 @@ int main(int argc, char* argv[]) {
     std::exit(1);
   }
   // Parsing went well, we can continue!
+
+  // Add a new command line parameter to make this customizable by the user!
+  const std::string output_file{"output.root"};
+  // If you are interested, you could look into the C++ feature called enum
+  // class which could make this code a lot more readable and maintainable by
+  // giving names to the different numbers used here!
+  std::cout << "Running data extraction!" << std::endl;
+  const auto measurements{read_measurements(input_file)};
+  switch (analysis_choice) {
+    case 0:
+      std::cout << "Persisting raw measurement data to file " << output_file
+                << std::endl;
+      persist_measurements(measurements, output_file);
+      break;
+    case 1:
+      std::cout << "Running signal/background analysis" << std::endl;
+      signal_and_background(measurements, output_file);
+      break;
+    case 2:
+      std::cout << "Running a second analysis" << std::endl;
+      some_analysis(measurements, output_file);
+      break;
+    case 3:
+      std::cout << "Running a third analysis" << std::endl;
+      some_other_analysis(measurements, output_file);
+      break;
+    case 4:
+      std::cout << "Running all analyzes!" << std::endl;
+      signal_and_background(measurements, output_file);
+      some_analysis(measurements, output_file);
+      some_other_analysis(measurements, output_file);
+      break;
+    default:
+      // We got an invalid analysis choice
+      std::cerr << "Analysis choice must be one of either 0, 1, 2, 3, or 4"
+                << std::endl;
+      std::exit(2);
+  }
 
   return 0;
 }
