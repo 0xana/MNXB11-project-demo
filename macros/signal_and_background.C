@@ -86,4 +86,4 @@ void signal_and_background(const std::string &input_filename) {
 }
 
 // Default file name version
-void signal_and_background() { signal_and_backround("output.root"); }
+void signal_and_background() { signal_and_backround("results/output.root"); }

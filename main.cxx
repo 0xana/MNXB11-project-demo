@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
   // Parsing went well, we can continue!
 
   // Add a new command line parameter to make this customizable by the user!
-  const std::string output_file{"output.root"};
+  const std::string output_file{"results/output.root"};
   // If you are interested, you could look into the C++ feature called enum
   // class which could make this code a lot more readable and maintainable by
   // giving names to the different numbers used here!
