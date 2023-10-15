@@ -14,6 +14,9 @@ This repository holds a short demonstration of how you can set up a project for 
 
 The demonstration is not intended to be exhaustive or something that you can copy directly, use it as a reference point for the structure and contents. For example, this demonstration does not check that the CLI arguments are valid. There also is no real physics in this demonstration. 
 
+# Overview 
+After building the project, you can run the `main` executable that the Makefile produces. It takes a path to a CSV file as an argument and a choice of which analysis to run. Only one analysis is actually implemented but there's also an option to persist the raw data extracted from the CSV file. This isn't entirely necessary to do for a project of this size where reading the data takes little time but when working on huge datasets it is often a good idea to have a separate step for extracting the data you actually need from the rest.
+
 # Build instructions 
 
 The following commands should be executed from the root directory of the demonstration.
