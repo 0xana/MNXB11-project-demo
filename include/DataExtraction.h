@@ -14,4 +14,12 @@
 // parameter. Invalid measurements are ignored but give a warning.
 std::vector<Measurement> read_measurements(const std::string& csv_filename);
 
+// Write measurements to a ROOT file with filename given by output_filename.
+// Results will be stored in a TTree with name "MNXB11" into branches:
+//
+// - background
+// - signal
+// - id
+void persist_measurements(const std::vector<Measurement>& measurements,
+                          const std::string& output_filename);
 #endif /* DATAEXTRACTION_H */
