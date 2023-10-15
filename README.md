@@ -1,3 +1,19 @@
+# About
+
+This repository holds a short demonstration of how you can set up a project for MNXB11 as suggested in the Project description. It includes examples of 
+
+- Using a library to parse command line arguments 
+- Writing a basic class to represent some physical result and doing rudimentary validation 
+- A demonstration of why you *don't* want to write CSV parsing code yourself 
+  - The code has at least one bug intentionally, don't use it! Use a library for reading CSV data. 
+- Writing data to a ROOT TTree 
+- Creating basic histograms with ROOT 
+- A Makefile that has all the settings needed to compile the project while linking to both ROOT and the CLI library 
+- A small dataset comprised of a CSV file with a lot of unnecessary data similar to that in the histogram from the fitting part of Lecture 7 
+- A rootlogon.C macro with some minor style settings 
+
+The demonstration is not intended to be exhaustive or something that you can copy directly, use it as a reference point for the structure and contents. For example, this demonstration does not check that the CLI arguments are valid. There also is no real physics in this demonstration. 
+
 # Build instructions 
 
 The following commands should be executed from the root directory of the demonstration.
